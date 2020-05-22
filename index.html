@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/solarized.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Cross site scripting. XSS</h1>
+					<p>
+						<small>Presentation created by Sergey Bashkin</small>
+					</p>
+				</section>
+				<section>
+					<h3>What is a Cross site scripting?</h3>
+					<p>The vulnerability enables attackers to inject scripts into web pages.</p>
+				</section>
+				<section>
+					<h3>Types a Cross site scripting</h3>
+					<ul>
+						<li class="fragment">Reflected</li>
+						<li class="fragment">Stored</li>
+					</ul>
+				</section>
+				<section>
+					<section>
+						<h3>Reflected XSS</h3>
+						<p>Using GET requests, you can execute various JavaScript scripts</p>
+					</section>
+					<section>
+						<h3>Code</h3>
+						<pre><code>
+<form action="#" method="GET">
+    <input type="text" name="form">
+    <input type="submit" name="button" value="Sumbit!">
+</form>
+<?php
+if ($_GET['button']) {
+    echo $_GET['form'];
+}
+?>
+						</code></pre>
+					</section>
+					<section>
+						<h3>Screenshot of browser</h3>
+						<img src="./assets/pic01.jpg" alt="">
+					</section>
+					<section>
+						<h3>Result of page, when the form submitted</h3>
+						<img src="./assets/pic02.jpg" alt="">
+					</section>
+					<section>
+						<h3>Code of page, when the form submitted</h3>
+						<img src="./assets/pic03.jpg" alt="">
+					</section>
+					<section>
+						<h3>Change content of the page, via URL</h3>
+						<img src="./assets/pic04.jpg" alt="">
+					</section>
+					<section>
+						<h3>Result of the page, when content changes via URL</h3>
+						<img src="./assets/pic05.jpg" alt="">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>Stored XSS</h3>
+						<p>Using add some text, you can type JavaScript code</p>
+					</section>
+					<section>
+						<h3>Publishing the code in the site</h3>
+						<img src="./assets/pic06.jpg" alt="">
+					</section>
+				</section>
+				<section>
+					<section data-background="./assets/question.gif">
+						<div style="background-color: rgba(256, 256, 256, 0.7); color: #fff; padding: 20px;">
+							<h3>How to fix this problem?</h3>
+							<h4 class="fragment">It is easy!</h4>
+						</div>
+					</section>
+					<section>
+						<h3>Solution of the problem!</h3>
+						<pre><code>
+<!-- It was -->
+if ($_GET['button']) {
+    echo $_GET['form'];
+}
+<!-- Has become -->
+if ($_GET['button']) {
+    echo htmlspecialchars($_GET['form']);
+}
+						</code></pre>
+					</section>
+					<section>
+						<h3>Screenshot of the browser, when added protect</h3>
+						<img src="./assets/pic07.jpg" alt="">
+					</section>
+					<section>
+						<h3>Code of the page, when added protect</h3>
+						<img src="./assets/pic08.jpg" alt="">
+					</section>
+				</section>
+				<section data-background="./assets/finish.jpg">
+					<div style="background-color: rgba(256, 256, 256, 0.7); color: #fff; padding: 20px;">
+						<h2>Thanks!</h2>
+					</div>
+				</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				hash: true,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/highlight/highlight.js' },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
