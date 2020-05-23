@@ -6,3 +6,5 @@ Theme of presentation is Cross Site Scripting (XSS)
 Presentation URL: https://smarrti.github.io/rs-presentation/index.html
 
 Task decription: https://github.com/rolling-scopes-school/tasks/blob/master/tasks/presentation.md
+
+Text of presentation: https://github.com/Smarrti/rs-presentation/blob/master/Text.txt
