@@ -1,0 +1,52 @@
+1 Slide: Cross site scripting. I`d like to tell you about Cross site scriptig. It is a type of computer security vulnerability. Cross site scripting has abbreviation is XSS
+Межсайтовый скриптинг. Я хочу поговорить об межсайтовом скриптинге. Это тип уязвимости компьютерной безопасности. Межсайтовый скриптинг имеет аббревиатуру - это XSS
+
+2 Slide: This vulnerability enables attackers to inject different scripts into web pages viewed by other users. A cross-site scripting vulnerability may be used by attackers to bypass access controls such as the same-origin policy.
+Эта уязвимость позволяет атакующим вставлять любой код в веб-страницы просматриваемые другими пользователями. Уязвимость межсайтового скриптинга может быть использована атакующими, что бы получить контроль как same-origin policy.
+
+3 Slide: Types a cross site scripting. There are two types of vulnerability. The first is the reflected type, and the second is the stored type.
+Типы межсайтового скриптинга. Есть два типа уязвимости. Первый тип это отраженный тип, и второй тип это хранимый тип.
+
+4 Slide: The essence of the reflected type of attack is a using GET request there is an opportunity inject JavaScript code in a page.
+Сущноссть отраженного типа атаки заключается в использовании GET запросов для возможности вставки JavaScript кода в страницу.
+
+5 Slide: It this slide you can see a sample code that shows an example reflected XSS attack. In the first part of code you can see an HTML code, when it contains a form. This form contains a GET method, text input, and Submit button. In the second part of code you can see a PHP code. This code showed text, which typed and submitted in the form. This text is displayed on the page under the form.
+На этом слайде вы можете увидеть пример кода который показывает пример отраженного XSS атаки. В первой части кода вы можете увидеть HTML код, который содержит форму. Эта форма содержит GET method, текстовое поле, и кнопка Отправить. Во втором части кода вы можете увидеть PHP код. Этот код показывает текст, который был написан и отправлен в форме. Этот текст показывается на странице под формой.
+
+6 Slide: In this slide you can see a web page that shows the empty form without any result.
+В этом сладе вы можете увидеть веб-страницу, которая показывает пустую форму без результата.
+
+7 Slide: When we typed and submitted the text in the form, we can see the same typed text under the form. And the same text we can see in the URL reflected by GET request.
+Когда мы написали и отправили текст в форме, мы можем увидеть этот же написанный текст под формой. И этот же текст мы можем увидеть в URL отраженный GET заросом.
+
+8 Slide: Now, lets see our own code in DevTools. We see this text in HTML code. Now we can type any text, and the browser will show this text on the page. And not only text, but also code.
+Сейчас, давайте посмотрим на наш код. Мы видим этот текст в HTML коде. Сейчас мы можем написать любой текст, и браузер покажет этот текст на странице. И нет только текст, но и код.
+
+9 Slide: Lets typed code in URL. For example we can type alert which shows location href. All what we need it is just type this code in URL in variable form, and open this URL.
+Давайте напишем код в URL. Например мы можем написать alert который отображает ссылку страницы. Все что нам нужно это написать код в URL в переменную form, и открыть этот URL.
+
+10 Slide: As a result we see the alert on the page which shows location href. 
+And we can type in the URL any code which can collect all data about the user, browser and other, and send this information on the intruder. And send this prepared URL to any people.
+Как результат мы видим уведомление страницы которые отображает ссылку страницы.
+И мы можем написать в URL любой код который может собирать всю информацию о пользователя, браузера и другое, и отправить эту информацию злоумышленику. И отправить подготовленный URL и отправить любому пользователю.
+
+11 Slide: Okay. Let's move on to the next type of attack. It is stored XSS. We can say that this is a complement to reflected type. We can add our JavaScript code in any unprotected site. 
+Хорошо. Давайте перейдем к следующему типу атаки. Это хранимый XSS. Мы можем сказать что это продолжение отраженного типа. Мы можем добавить наш JavaScript код на любой незащищенные сайт.
+
+12 Slide: For example we can add in comments. And if the site is not protected then our code will be completed on other computers. On our example, it is YouTube, our code will not work, beacuse programmers took care of this.
+Например, мы можем добавить в комментарии. И если сайт не защищенный, то наш код будет выполнен на других компьютерах. В нашем примере, это YouTube, наш код не будет работать, так как программисты позаботились об этом.
+
+13 Slide: Okay. How to fix this problem? It is easy!
+Хорошо, как исправить эту проблему? Это легко!
+
+14 Slide: The solution to the problem for this attack has PHP function htmlspecialchars. We display the text from the form using this function. This function replaces quotes on the special symbols.
+Решение этой проблемы по этой атаки это PHP функция htmlspecialchars. Мы отображаем текст из формы используя эту функцию. Эта функция заменяет кавычки на специальные символы.
+
+15 Slide: As a result on the page we see our code like a text. And our script is not working. It is good!
+Как результат на странице мы видем наш код в виде текста. И наш код не будет работать. Это хорошо!
+
+16 Slide: Now our code looks like a simple text.
+Сейчас наш код выглядит как просто текст.
+
+17 Slide: Thanks for watching
+Спасибо за просмотр.
